@@ -1,4 +1,6 @@
 from abc import abstractmethod
+import warnings
+
 
 class SourceData(classmethod):
 
@@ -12,7 +14,7 @@ class SourceData(classmethod):
     @abstractmethod
     def debug(self):
         for i in self.__dict__.keys():
-            print("%s: %s" % (i, self.__dict__[i]))
+            print ("%s: %s" % (i, self.__dict__[i]))
 
     @abstractmethod
     def get_dict(self):
@@ -174,6 +176,17 @@ class Place(SourceData):
         self.extended_data = ExtendedData()
         self.has_extended_data = has_extended_data
 
+    @property
+    def zestiamte(self):
+        """Backward-compatible typo property to prevent breaking changes."""
+        warnings.warn(
+            'The ``zestiamte`` attribute has been renamed to '
+            '``zestimate`` and will be removed in a future release.',
+            DeprecationWarning,
+        )
+        return self.zestimate
+
+
     def set_data(self, source_data):
         """
         :source_data": Data from data.get('SearchResults:searchresults', None)['response']['results']['result']
@@ -201,7 +214,3 @@ class Place(SourceData):
             'extended_data': self.extended_data.get_dict()
         }
         return data
-
-
-
-
