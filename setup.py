@@ -15,7 +15,7 @@ def read(*paths):
 
 setup(
     name='python-zillow',
-    version='0.1.1',
+    version='0.2.0',
     author='The Python-Zillow Developers',
     author_email='python-zillow@googlegroups.com',
     license='Apache License 2.0',
@@ -24,7 +24,10 @@ setup(
     keywords=['zillow', 'api', 'real estate', 'python'],
     description='A Python wrapper around the Zillow API',
     packages=find_packages(exclude=['tests*']),
-    install_requires=['future', 'requests', 'requests-oauthlib'],
+    install_requires=[
+        'requests',
+        'xmltodict',
+    ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
@@ -37,6 +40,8 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
 )
